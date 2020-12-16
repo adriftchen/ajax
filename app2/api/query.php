@@ -10,8 +10,6 @@ echo "<td>{$row['name']}</td>";
 echo "<td>{$row['classes']}</td>";
 echo "<td>{$row['num']}</td>";
 echo "<td>{$row['score']}</td>";
-
-echo "</td>";
 echo "</tr>";
 }
 
