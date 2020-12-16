@@ -41,6 +41,14 @@
 </html>
 <script>
 //建立一個函式loadpage(page)用來載入內容至content區塊中
+lo('results/main.html')
+
+function lo(url){
+    $.get(url,function(page){
+      console.log(page)
+      $(".content").html(page)
+    })
+  }
 
 
 </script>
