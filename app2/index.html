@@ -32,22 +32,15 @@ table td{
   </form>
 
   <table>
-    <tr>
+    <tr id="header"> <!-- 加id，query()才叫的到table，頁面才能顯示新增 -->
       <td>id</td>
       <td>name</td>
       <td>classes</td>
       <td>num</td>
       <td>score</td>
+      <td>score</td>
     </tr>
-
-    
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
+    <tbody id="list"></tbody>
 
   </table>
   
@@ -61,7 +54,8 @@ table td{
 * 4.是否會有回傳值？回傳值的功用及處理？
 * 5.是否需要更新畫面內容？更新畫面的方法？
 ************************************/
-
+//網頁跑完最後面，要先觸發 打query()，可放在script之後
+query()
 
 //新增資料的函式
 function create(){
@@ -74,6 +68,7 @@ function create(){
     console.log("=>"+res)
     if(res=='成功'){
       alert("新增成功")
+      query() /* 不須重整，資料會新增 */
     }else{
       alert("新增失敗")
     }
@@ -84,7 +79,12 @@ function create(){
 
 //查詢資料的函式
 function query(){
+$.get("api/query.php",function(res){
+  // $("#header").after(res)
+  //用after:新資料插入，但整份表格會在下方全部複製，改叫tbody的id=list，抽換整份html
+  $("#list").html(res)
 
+})
 }
 
 //編輯資料的函式
