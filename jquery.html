@@ -8,6 +8,21 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
       <!-------引入jQuery函式庫------->
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <!-- 可試著在console 輸入$("title").html("hello") -->
+      <style>
+        li{
+            padding:5px;
+            box-shadow: 0 0 5px #ccc;
+            margin:5px 0;
+            font-size:16px;
+        }
+        li:nth-child(odd){
+            color:rgba(38, 42, 54, 0.623);
+            background-color:cadetblue;
+        }
+            
+    </style>
 </head>
 <body>
     <h1 class="header">jQuery</h1>
@@ -24,20 +39,54 @@
     * 3.建立回呼函式(call back function)來處理回應時的各項行為
     * 4.建立錯誤處理
     ********************************************************/
-     
+    
     //利用$.ajax()方法傳送請求並取得回應
-    /* $.ajax(
-      {
-        url:'',
-        type:'',
-        success:,
-        error:,
-        complete:
-      }
-    ) */   
+    // $.ajax(
+    //   {
+    //     url:'https://kktix.com/events.json',
+    //     type:'get',
+    //     success:function(res){
+    //       // console.log(res) 在console直接拿到資料了
+    //       document.getElementsByTagName('h4')[0].innerHTML=res.title
+    //         let events=res.entry
+    //         let html="";
+    //         for(let i=0;i<events.length;i++){
+
+    //         html=html+`<li><a href="${events[i].url}">${events[i].title}</a></li>`
+    //         }
+    //         let ul=document.getElementsByTagName('ul')[0]
+    //         ul.innerHTML=html;
+    //       },
+    //     error:,
+    //     complete:
+    //   }
+    // )
 
     
     //利用$.get()方法傳送請求並取得回應
+
+    $.get("https://kktix.com/events.json",function(res){
+      document.getElementsByTagName('h4')[0].innerHTML=res.title
+            let events=res.entry
+            let html="";
+            for(let i=0;i<events.length;i++){
+
+            html=html+`<li><a href="${events[i].url}">${events[i].title}</a></li>`
+            }
+            let ul=document.getElementsByTagName('ul')[0]
+            ul.innerHTML=html;
+
+    })
+
+    // $.ajax(
+    // {
+    //     type: "GET",
+    //     url: "/GetOilPriceJson.aspx?type=TodayOilPriceString", 
+    //     success: function (data) {
+
+    //     }
+    // });
+
 
 
   </script>
